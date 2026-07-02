@@ -426,9 +426,13 @@ nav.mobile-nav {
     padding: 100px var(--spacing-md) !important;
   }
 
-  /* 2. Center Hero Buttons */
+  /* 2. Center Hero Buttons and Shrink Image/Orbit for Mobile */
   .hero-buttons {
     justify-content: center;
+  }
+  .orbit-container {
+    transform: scale(0.8); /* Shrink image and orbit path to prevent any clipping on small mobile viewports */
+    margin: 24px auto 0 auto !important;
   }
 
   /* 3. Center About Section Content */

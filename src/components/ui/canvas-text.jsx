@@ -1,5 +1,18 @@
 import React, { useRef, useEffect } from 'react';
 
+// Helper to calculate responsive font size and character spacing dynamically
+const getFontAndSpacing = (w) => {
+  if (w < 360) {
+    return { fontSize: '1.8rem', charSpacing: 4 };
+  } else if (w < 430) {
+    return { fontSize: '2.2rem', charSpacing: 6 };
+  } else if (w < 600) {
+    return { fontSize: '2.8rem', charSpacing: 8 };
+  } else {
+    return { fontSize: '4.5rem', charSpacing: 15 };
+  }
+};
+
 export function CanvasText({ 
   text, 
   colors = ['#C5A059', '#F2EEE5', '#8C6A3F', '#7A7670', '#E5D3B3'],
@@ -22,11 +35,10 @@ export function CanvasText({
       const dpr = window.devicePixelRatio || 1;
 
       // Responsive font size matching animate loop
-      const fontSize = rect.width < 500 ? '3.2rem' : '4.5rem';
-      ctx.font = `400 ${fontSize} 'Italiana', serif`;
+      const { fontSize, charSpacing } = getFontAndSpacing(rect.width);
+      ctx.font = `900 ${fontSize} 'Italiana', serif`;
 
       // Measure total text width with spacing
-      const charSpacing = rect.width < 500 ? 8 : 15;
       let textWidth = 0;
       for (let i = 0; i < text.length; i++) {
         textWidth += ctx.measureText(text[i]).width + charSpacing;
@@ -53,7 +65,7 @@ export function CanvasText({
       ctx.clearRect(0, 0, width, height);
 
       // Use a responsive font size based on screen width
-      const fontSize = width < 500 ? '3.2rem' : '4.5rem';
+      const { fontSize, charSpacing } = getFontAndSpacing(width);
       
       // Create a luxury gold gradient for high-contrast letters (bright, luminous gold tones)
       const grad = ctx.createLinearGradient(0, 0, width, 0);
@@ -65,7 +77,6 @@ export function CanvasText({
 
       // Helper to draw text with individual character spacing in Canvas (responsive spacing)
       const drawTextWithSpacing = (type, content, startX, y) => {
-        const charSpacing = width < 500 ? 8 : 15; // 8px spacing on mobile, 15px spacing on desktop
         let currentX = startX;
         for (let i = 0; i < content.length; i++) {
           const char = content[i];
