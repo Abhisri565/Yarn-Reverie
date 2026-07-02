@@ -54,7 +54,7 @@ function App() {
         gridTemplateColumns: '1.2fr 1fr', 
         gap: '96px', // Increased gap for a spacious and balanced layout
         alignItems: 'center',
-        padding: '100px var(--spacing-md)', // Match other sections padding for clean vertical rhythm
+        padding: '100px var(--spacing-md) 100px calc(var(--spacing-md) + 30px)', // Shifted slightly to the right by 30px
         minHeight: 'calc(100vh - 80px)'
       }}>
         {/* Left Side: Badge, Heading, Quote, and side-by-side Buttons (No background card) */}
