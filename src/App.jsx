@@ -326,19 +326,22 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer-container container" style={{ 
+      {/* Footer with full-width background */}
+      <footer className="footer-container" style={{ 
         borderTop: '1px solid rgba(242, 238, 229, 0.08)',
         backgroundColor: 'rgba(17, 17, 16, 0.5)'
       }}>
-        <div className="footer-content">
-          <img src="/logo.png" alt="Yarn Reverie Logo" style={{ height: '24px', width: '24px', borderRadius: '50%' }} />
-          <div className="text-label" style={{ fontSize: '0.65rem' }}>
-            © {new Date().getFullYear()} Yarn Reverie. All rights reserved.
+        {/* Centered content container for alignment */}
+        <div className="container footer-wrap">
+          <div className="footer-content">
+            <img src="/logo.png" alt="Yarn Reverie Logo" style={{ height: '24px', width: '24px', borderRadius: '50%' }} />
+            <div className="text-label" style={{ fontSize: '0.65rem' }}>
+              © {new Date().getFullYear()} Yarn Reverie. All rights reserved.
+            </div>
           </div>
-        </div>
-        <div className="text-label" style={{ fontSize: '0.82rem', fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.08em', color: 'var(--color-secondary)' }}>
-          "Made with love, stitched with care."
+          <div className="text-label" style={{ fontSize: '0.82rem', fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.08em', color: 'var(--color-secondary)' }}>
+            "Made with love, stitched with care."
+          </div>
         </div>
       </footer>
     </div>
