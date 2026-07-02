@@ -50,7 +50,7 @@ export function CanvasText({
 
       // Helper to draw text with individual character spacing in Canvas (responsive spacing)
       const drawTextWithSpacing = (type, content, startX, y) => {
-        const charSpacing = width < 500 ? 8 : 22; // 8px spacing on mobile, 22px spacing on desktop
+        const charSpacing = width < 500 ? 8 : 20; // 8px spacing on mobile, 20px spacing on desktop
         let currentX = startX;
         for (let i = 0; i < content.length; i++) {
           const char = content[i];
@@ -63,8 +63,8 @@ export function CanvasText({
         }
       };
 
-      // 1. Draw Text (Mask base)
-      ctx.font = `900 ${fontSize} 'Italiana', serif`;
+      // 1. Draw Text (Mask base) - set to font weight 400 (regular) for Italiana serif elegance
+      ctx.font = `400 ${fontSize} 'Italiana', serif`;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'left';
       ctx.fillStyle = grad;
@@ -85,7 +85,7 @@ export function CanvasText({
         ctx.beginPath();
         const colorIndex = i % colors.length;
         ctx.strokeStyle = colors[colorIndex];
-        ctx.lineWidth = 2.5; // Thicker lines for visibility
+        ctx.lineWidth = 1.8; // Reduced line width to match thin font style
         ctx.globalAlpha = 0.95 - (i * 0.06);
 
         const yOffset = textY - 30 + i * lineGap;
@@ -105,12 +105,12 @@ export function CanvasText({
       
       // Draw a bright border outline to frame the dark letters clearly
       ctx.strokeStyle = '#FFEAA7'; // High-contrast warm cream-gold border
-      ctx.lineWidth = 4;
+      ctx.lineWidth = 2; // Reduced to fit thin font weight
       drawTextWithSpacing('stroke', text, textX, textY);
 
       // Draw a bold dark outline to separate text from the dark background
       ctx.strokeStyle = '#111110';
-      ctx.lineWidth = 10; // Extra thick boundary line to pop out
+      ctx.lineWidth = 6; // Reduced to fit thin font weight
       drawTextWithSpacing('stroke', text, textX, textY);
 
       // Draw solid gold gradient backing text for high vibrancy
