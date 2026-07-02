@@ -20,9 +20,24 @@ export function CanvasText({
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
+
+      // Responsive font size matching animate loop
+      const fontSize = rect.width < 500 ? '3.2rem' : '4.5rem';
+      ctx.font = `400 ${fontSize} 'Italiana', serif`;
+
+      // Measure total text width with spacing
+      const charSpacing = rect.width < 500 ? 8 : 20;
+      let textWidth = 0;
+      for (let i = 0; i < text.length; i++) {
+        textWidth += ctx.measureText(text[i]).width + charSpacing;
+      }
+
+      // Add a safety buffer for outlines and shadows (40px)
+      const neededWidth = Math.max(rect.width, textWidth + 40);
+
+      canvas.width = neededWidth * dpr;
       canvas.height = rect.height * dpr;
-      canvas.style.width = `${rect.width}px`;
+      canvas.style.width = `${neededWidth}px`;
       canvas.style.height = `${rect.height}px`;
       ctx.scale(dpr, dpr);
     };
@@ -136,7 +151,7 @@ export function CanvasText({
         width: '100%', 
         height: '90px', 
         display: 'inline-block',
-        overflow: 'hidden'
+        overflow: 'visible' // Ensure overflowing characters like 's' are never clipped
       }}
     >
       <canvas ref={canvasRef} style={{ display: 'block' }} />
