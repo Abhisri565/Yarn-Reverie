@@ -30,8 +30,10 @@
   --transition-normal: 0.4s ease;
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scroll on mobile viewport */
+  width: 100%;
 }
 
 /* Reset & Base Styles */
