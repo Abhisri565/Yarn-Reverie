@@ -48,6 +48,21 @@ export function CanvasText({
       grad.addColorStop(0.75, '#8C6A3F');  // Deep bronze gold
       grad.addColorStop(1, '#7A5C29');     // Dark antique brass
 
+      // Helper to draw text with individual character spacing in Canvas
+      const drawTextWithSpacing = (type, content, startX, y) => {
+        const charSpacing = 10; // 10px extra letter spacing to prevent character overlap
+        let currentX = startX;
+        for (let i = 0; i < content.length; i++) {
+          const char = content[i];
+          if (type === 'fill') {
+            ctx.fillText(char, currentX, y);
+          } else if (type === 'stroke') {
+            ctx.strokeText(char, currentX, y);
+          }
+          currentX += ctx.measureText(char).width + charSpacing;
+        }
+      };
+
       // 1. Draw Text (Mask base)
       ctx.font = `900 ${fontSize} 'Italiana', serif`;
       ctx.textBaseline = 'middle';
@@ -57,7 +72,7 @@ export function CanvasText({
       // Vertical alignment centering
       const textX = 0;
       const textY = height / 2;
-      ctx.fillText(text, textX, textY);
+      drawTextWithSpacing('fill', text, textX, textY);
 
       // 2. Set Composite Operation to mask waves inside text characters
       ctx.globalCompositeOperation = 'source-in';
@@ -91,16 +106,16 @@ export function CanvasText({
       // Draw a bright border outline to frame the dark letters clearly
       ctx.strokeStyle = '#FFEAA7'; // High-contrast warm cream-gold border
       ctx.lineWidth = 4;
-      ctx.strokeText(text, textX, textY);
+      drawTextWithSpacing('stroke', text, textX, textY);
 
       // Draw a bold dark outline to separate text from the dark background
       ctx.strokeStyle = '#111110';
       ctx.lineWidth = 10; // Extra thick boundary line to pop out
-      ctx.strokeText(text, textX, textY);
+      drawTextWithSpacing('stroke', text, textX, textY);
 
       // Draw solid gold gradient backing text for high vibrancy
       ctx.fillStyle = grad;
-      ctx.fillText(text, textX, textY);
+      drawTextWithSpacing('fill', text, textX, textY);
 
       animationFrameId = requestAnimationFrame(animate);
     };
