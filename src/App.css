@@ -122,8 +122,8 @@
 
 /* About Us Section Styles */
 .about-section {
-  padding: 80px var(--spacing-md);
-  max-width: 960px;
+  padding: 100px var(--spacing-md);
+  max-width: 1200px; /* Match container width for perfect alignment */
   margin: 0 auto;
 }
 
@@ -194,7 +194,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   padding: 40px 0;
-  max-width: 960px;
+  max-width: 1200px; /* Match container width for perfect alignment */
   margin: 0 auto;
 }
 
@@ -319,8 +319,8 @@
   grid-template-columns: 1fr 1.2fr;
   gap: 64px;
   align-items: flex-start;
-  padding: 80px var(--spacing-md) 100px var(--spacing-md);
-  max-width: 960px;
+  padding: 100px var(--spacing-md);
+  max-width: 1200px; /* Match container width for perfect alignment */
   margin: 0 auto;
 }
 

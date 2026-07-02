@@ -52,9 +52,9 @@ function App() {
       <main id="home" className="container animate-fade-in" style={{ 
         display: 'grid', 
         gridTemplateColumns: '1.2fr 1fr', 
-        gap: '48px',
+        gap: '96px', // Increased gap for a spacious and balanced layout
         alignItems: 'center',
-        padding: '80px var(--spacing-md) 100px var(--spacing-md)',
+        padding: '100px var(--spacing-md)', // Match other sections padding for clean vertical rhythm
         minHeight: 'calc(100vh - 80px)'
       }}>
         {/* Left Side: Badge, Heading, Quote, and side-by-side Buttons (No background card) */}
