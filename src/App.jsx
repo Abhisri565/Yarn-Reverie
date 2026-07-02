@@ -74,7 +74,7 @@ function App() {
           }}>
             <CanvasText 
               text="Cozy Loops" 
-              colors={['#FFD700', '#F2EEE5', '#D4AF37', '#CD7F32', '#FFF8DC']} 
+              colors={['#D4AF37', '#CD7F32', '#B8860B', '#C5A059', '#A37712']} 
               lineGap={6} 
               animationDuration={25} 
             />
