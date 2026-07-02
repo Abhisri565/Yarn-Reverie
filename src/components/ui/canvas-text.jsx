@@ -40,11 +40,19 @@ export function CanvasText({
       // Use a responsive font size based on screen width
       const fontSize = width < 500 ? '3.2rem' : '4.5rem';
       
+      // Create a luxury gold gradient for high-contrast letters
+      const grad = ctx.createLinearGradient(0, 0, width, 0);
+      grad.addColorStop(0, '#FFFFFF');     // Shiny light silver reflection
+      grad.addColorStop(0.3, '#FFEAA7');   // Shimmering soft gold
+      grad.addColorStop(0.6, '#D4AF37');   // Intense 24k gold
+      grad.addColorStop(0.9, '#C5A059');   // Muted gold
+      grad.addColorStop(1, '#FFFFFF');     // Back to reflection
+
       // 1. Draw Text (Mask base)
       ctx.font = `900 ${fontSize} 'Italiana', serif`;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'left';
-      ctx.fillStyle = '#FFFFFF';
+      ctx.fillStyle = grad;
       
       // Vertical alignment centering
       const textX = 0;
@@ -55,15 +63,15 @@ export function CanvasText({
       ctx.globalCompositeOperation = 'source-in';
 
       // 3. Draw animated waving yarn threads using colors
-      offset += (0.1 / animationDuration) * 10;
+      offset += (0.15 / animationDuration) * 10;
       
       const waveCount = 10;
       for (let i = 0; i < waveCount; i++) {
         ctx.beginPath();
         const colorIndex = i % colors.length;
         ctx.strokeStyle = colors[colorIndex];
-        ctx.lineWidth = 2.0;
-        ctx.globalAlpha = 0.85 - (i * 0.05);
+        ctx.lineWidth = 2.5; // Thicker lines for visibility
+        ctx.globalAlpha = 0.95 - (i * 0.06);
 
         const yOffset = textY - 30 + i * lineGap;
         ctx.moveTo(0, yOffset);
@@ -80,13 +88,13 @@ export function CanvasText({
       // 4. Draw backing text and dark outline to maximize contrast
       ctx.globalCompositeOperation = 'destination-over';
       
-      // Draw a subtle dark outline to separate text from the background
-      ctx.strokeStyle = 'rgba(17, 17, 16, 0.9)';
-      ctx.lineWidth = 6;
+      // Draw a bold dark outline to separate text from the dark background
+      ctx.strokeStyle = '#111110';
+      ctx.lineWidth = 10; // Extra thick boundary line to pop out
       ctx.strokeText(text, textX, textY);
 
-      // Draw solid bright white backing text
-      ctx.fillStyle = '#FFFFFF';
+      // Draw solid gold gradient backing text for high vibrancy
+      ctx.fillStyle = grad;
       ctx.fillText(text, textX, textY);
 
       animationFrameId = requestAnimationFrame(animate);
