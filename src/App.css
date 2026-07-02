@@ -413,25 +413,7 @@
   transform: rotate(-45deg) translate(2px, 1px);
 }
 
-/* Footer Styles */
-.footer-container {
-  width: 100%;
-  padding: 32px 0;
-  box-sizing: border-box;
-}
-
-.footer-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.footer-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+/* Legacy footer styles removed - footer uses original inline styling */
 
 /* Mobile overlay drawer style */
 nav.mobile-nav {
@@ -555,20 +537,13 @@ nav.mobile-nav {
 }
 
 /* 7. Footer Centering & Responsive stacking for Mobile views under 600px */
+/* Footer responsive alignment on mobile resolutions under 600px */
 @media (max-width: 600px) {
-  .footer-container {
-    padding: 32px var(--spacing-md) !important;
-  }
-  .footer-wrap {
+  footer {
     flex-direction: column !important;
     gap: 16px !important;
     text-align: center !important;
     justify-content: center !important;
-  }
-  .footer-content {
-    justify-content: center !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    padding: 24px var(--spacing-md) !important;
   }
 }

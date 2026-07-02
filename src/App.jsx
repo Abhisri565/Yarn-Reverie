@@ -326,22 +326,23 @@ function App() {
         </div>
       </section>
 
-      {/* Footer with full-width background */}
-      <footer className="footer-container" style={{ 
+      {/* Footer */}
+      <footer style={{ 
+        padding: '32px 40px', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
         borderTop: '1px solid rgba(242, 238, 229, 0.08)',
         backgroundColor: 'rgba(17, 17, 16, 0.5)'
       }}>
-        {/* Centered content container for alignment */}
-        <div className="container footer-wrap">
-          <div className="footer-content">
-            <img src="/logo.png" alt="Yarn Reverie Logo" style={{ height: '24px', width: '24px', borderRadius: '50%' }} />
-            <div className="text-label" style={{ fontSize: '0.65rem' }}>
-              © {new Date().getFullYear()} Yarn Reverie. All rights reserved.
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img src="/logo.png" alt="Yarn Reverie Logo" style={{ height: '24px', width: '24px', borderRadius: '50%' }} />
+          <div className="text-label" style={{ fontSize: '0.65rem' }}>
+            © {new Date().getFullYear()} Yarn Reverie. All rights reserved.
           </div>
-          <div className="text-label" style={{ fontSize: '0.82rem', fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.08em', color: 'var(--color-secondary)' }}>
-            "Made with love, stitched with care."
-          </div>
+        </div>
+        <div className="text-label" style={{ fontSize: '0.82rem', fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.08em', color: 'var(--color-secondary)' }}>
+          "Made with love, stitched with care."
         </div>
       </footer>
     </div>
