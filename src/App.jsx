@@ -74,17 +74,18 @@ function App() {
           }}>
             <CanvasText 
               text="Cozy Loops" 
-              colors={['#D4AF37', '#CD7F32', '#B8860B', '#C5A059', '#A37712']} 
+              colors={['#B8860B', '#CD7F32', '#8C6A3F', '#A37712', '#7A5C29']} 
               lineGap={6} 
               animationDuration={25} 
             />
           </h1>
           
-          {/* Elegant Quotation Paragraph */}
+          {/* Elegant Quotation Paragraph - Styled in Gold with Text Shadow for high contrast */}
           <p className="text-body" style={{ 
             fontSize: '0.92rem', 
             lineHeight: '1.8', 
-            color: 'var(--color-secondary)', 
+            color: 'var(--color-tertiary)', 
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.9)',
             marginBottom: '40px',
             maxWidth: '520px',
             borderLeft: '2px solid var(--color-tertiary)',

@@ -40,13 +40,13 @@ export function CanvasText({
       // Use a responsive font size based on screen width
       const fontSize = width < 500 ? '3.2rem' : '4.5rem';
       
-      // Create a luxury gold gradient for high-contrast letters (deeper dark gold tones)
+      // Create a luxury gold gradient for high-contrast letters (still darker bronze-gold tones)
       const grad = ctx.createLinearGradient(0, 0, width, 0);
-      grad.addColorStop(0, '#D4AF37');     // 24k Gold base
-      grad.addColorStop(0.25, '#FFEAA7');  // Warm champagne gold highlight
-      grad.addColorStop(0.5, '#B8860B');   // Deep, dark goldenrod bronze
+      grad.addColorStop(0, '#C5A059');     // Soft antique gold
+      grad.addColorStop(0.25, '#B8860B');  // Warm goldenrod bronze
+      grad.addColorStop(0.5, '#8C6A3F');   // Deep bronze gold (darker element)
       grad.addColorStop(0.75, '#A37712');  // Amber dark gold
-      grad.addColorStop(1, '#C5A059');     // Soft antique gold
+      grad.addColorStop(1, '#8C6A3F');     // Deep bronze gold
 
       // 1. Draw Text (Mask base)
       ctx.font = `900 ${fontSize} 'Italiana', serif`;
