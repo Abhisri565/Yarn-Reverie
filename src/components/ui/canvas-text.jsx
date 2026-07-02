@@ -55,13 +55,13 @@ export function CanvasText({
       // Use a responsive font size based on screen width
       const fontSize = width < 500 ? '3.2rem' : '4.5rem';
       
-      // Create a luxury gold gradient for high-contrast letters (still darker bronze-gold tones)
+      // Create a luxury gold gradient for high-contrast letters (deeper dark gold tones)
       const grad = ctx.createLinearGradient(0, 0, width, 0);
-      grad.addColorStop(0, '#A37712');     // Dark amber gold
-      grad.addColorStop(0.25, '#8C6A3F');  // Deep bronze gold
-      grad.addColorStop(0.5, '#7A5C29');   // Dark antique brass
-      grad.addColorStop(0.75, '#8C6A3F');  // Deep bronze gold
-      grad.addColorStop(1, '#7A5C29');     // Dark antique brass
+      grad.addColorStop(0, '#D4AF37');     // 24k Gold base
+      grad.addColorStop(0.25, '#FFEAA7');  // Warm champagne gold highlight
+      grad.addColorStop(0.5, '#B8860B');   // Deep, dark goldenrod bronze
+      grad.addColorStop(0.75, '#A37712');  // Amber dark gold
+      grad.addColorStop(1, '#C5A059');     // Soft antique gold
 
       // Helper to draw text with individual character spacing in Canvas (responsive spacing)
       const drawTextWithSpacing = (type, content, startX, y) => {
@@ -78,8 +78,8 @@ export function CanvasText({
         }
       };
 
-      // 1. Draw Text (Mask base) - set to font weight 400 (regular) for Italiana serif elegance
-      ctx.font = `400 ${fontSize} 'Italiana', serif`;
+      // 1. Draw Text (Mask base) - set back to font weight 900 as originally approved
+      ctx.font = `900 ${fontSize} 'Italiana', serif`;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'left';
       ctx.fillStyle = grad;
@@ -100,7 +100,7 @@ export function CanvasText({
         ctx.beginPath();
         const colorIndex = i % colors.length;
         ctx.strokeStyle = colors[colorIndex];
-        ctx.lineWidth = 1.8; // Reduced line width to match thin font style
+        ctx.lineWidth = 2.5; // Restored line width for high contrast
         ctx.globalAlpha = 0.95 - (i * 0.06);
 
         const yOffset = textY - 30 + i * lineGap;
@@ -120,12 +120,12 @@ export function CanvasText({
       
       // Draw a bright border outline to frame the dark letters clearly
       ctx.strokeStyle = '#FFEAA7'; // High-contrast warm cream-gold border
-      ctx.lineWidth = 2; // Reduced to fit thin font weight
+      ctx.lineWidth = 4; // Restored to fit bold weight
       drawTextWithSpacing('stroke', text, textX, textY);
 
       // Draw a bold dark outline to separate text from the dark background
       ctx.strokeStyle = '#111110';
-      ctx.lineWidth = 6; // Reduced to fit thin font weight
+      ctx.lineWidth = 10; // Restored to fit bold weight
       drawTextWithSpacing('stroke', text, textX, textY);
 
       // Draw solid gold gradient backing text for high vibrancy
